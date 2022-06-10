@@ -1,3 +1,15 @@
+"""Excel helper module includes the following fuctions.
+
+refresh_workbook - function to simulate 'Refresh All' buttion in Excel
+split_csv - function to split csv into two files if there is a blank line within
+ExcelWriter - an Excel Writer class with default style setting
+
+Todo:
+    *bug fixes for ExcelWriter class _remove_nan method when there is no date
+
+"""
+
+
 import win32com.client as win32
 import xlsxwriter
 import pandas as pd
@@ -12,6 +24,15 @@ logging.basicConfig(
 
 
 def refresh_workbook(xl_file):
+    """Function to refresh all data in Excel workbook using win32com method.
+
+    Args:
+        xl_file (str): the path-like string for xlsx file location
+
+    Returns:
+        None
+        
+    """
 
     excel = win32.gencache.EnsureDispatch("Excel.Application")
     try:
