@@ -55,6 +55,18 @@ def refresh_workbook(xl_file):
 
 
 def split_csv(full_csv, header_csv, details_csv, max_lines_to_check=30):
+    """Function to splite csv files with one blank line into two csv files.
+
+    Args:
+        full_csv (str): path-like string for original csv file with one blank line 
+        header_csv (str) : path-like string for header/top csv file 
+        details_csv (str): path-like string for details/bottom csv file
+        max_lines_to_check (int): only check the first n lines for blank line
+
+    Returns:
+        None
+        
+    """
     with open(full_csv, "r", encoding="utf-8-sig") as full:
         for i in range(max_lines_to_check):
             if not full.readline().strip():
